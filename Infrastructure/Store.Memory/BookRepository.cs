@@ -8,9 +8,18 @@ namespace Store.Memory
 {
     public class BookRepository : IBookRepository
     {
+        private readonly Book[] books = new[]
+        {
+           new Book(1,"Art of Programming"),
+           new Book(1,"Refactoring"),
+           new Book(1,"C Programming Language"),
+       };
+        
+        
         public Book[] GetAllByTitle(string titlePart)
         {
-            throw new NotImplementedException();
+            return books.Where(book => book.Title.Contains(titlePart)).ToArray();
         }
+
     }
 }
