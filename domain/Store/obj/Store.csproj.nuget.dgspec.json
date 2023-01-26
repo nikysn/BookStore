@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\GitHubRepository\\BookStore\\domain\\Store\\Store.csproj": {}
+    "G:\\RepositoryVisualStudio\\domain\\Store\\Store.csproj": {}
   },
   "projects": {
-    "G:\\GitHubRepository\\BookStore\\domain\\Store\\Store.csproj": {
+    "G:\\RepositoryVisualStudio\\domain\\Store\\Store.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\GitHubRepository\\BookStore\\domain\\Store\\Store.csproj",
+        "projectUniqueName": "G:\\RepositoryVisualStudio\\domain\\Store\\Store.csproj",
         "projectName": "Store",
-        "projectPath": "G:\\GitHubRepository\\BookStore\\domain\\Store\\Store.csproj",
+        "projectPath": "G:\\RepositoryVisualStudio\\domain\\Store\\Store.csproj",
         "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "G:\\GitHubRepository\\BookStore\\domain\\Store\\obj\\",
+        "outputPath": "G:\\RepositoryVisualStudio\\domain\\Store\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",

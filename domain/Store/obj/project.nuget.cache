@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G2GcrCXrCvgdfUui9ZwjezaF0Xd8xy6o2h1r/oWjBNXZRF9I1iujxebwmi5v6TTg6tmyBJjpk3XVqpfd4nRSdw==",
+  "dgSpecHash": "wA8bw71fEauAMBujxtMa9C2Jap7VJLKjeafDePs5DxITJAuNfRf65P16p88kfwTM4A7223XTl0rcwKbx5+89eA==",
   "success": true,
-  "projectFilePath": "G:\\GitHubRepository\\BookStore\\domain\\Store\\Store.csproj",
+  "projectFilePath": "G:\\RepositoryVisualStudio\\domain\\Store\\Store.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
