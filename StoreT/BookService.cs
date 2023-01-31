@@ -8,8 +8,8 @@ namespace Store
 {
     public class BookService
     {
-        private readonly IBookRepository _bookRepository;
-        public BookService(IBookRepository bookRepository)
+        private readonly IBookRepository _bookRepository;  // тут работает инверсия зависимостей
+        public BookService(IBookRepository bookRepository) // патерн конструктор инжекшен - внедрение через конструктор
         {
             this._bookRepository = bookRepository;
         }
