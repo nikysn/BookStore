@@ -13,18 +13,18 @@ namespace Store.Tests
         {
             var bookRepositoryStun = new Mock<IBookRepository>();
 
-            bookRepositoryStun.Setup(x => x.GetAllByIsbn(It.IsAny<string>()))   // тут заглушка которая создает массив и возвращает его используя метод GetAllByIsbn
-                .Returns(new[] { new Book(1, "", "", "") });
+            bookRepositoryStun.Setup(x => x.GetAllByIsbn("Ritchie"))   // тут заглушка которая создает массив и возвращает его используя метод GetAllByIsbn
+                .Returns(new[] { new Book(1, "", "", "", "", 0m) });
 
-            bookRepositoryStun.Setup(x => x.GetAllByTitleOrAuthor(It.IsAny<string>())) // Вторая заглушка которая создает массив и возвращает его используя метод GetAllByTitleOrAuthor
-                .Returns(new[] { new Book(2, "", "", "") });
+            bookRepositoryStun.Setup(x => x.GetAllByTitleOrAuthor("Ritchie")) // Вторая заглушка которая создает массив и возвращает его используя метод GetAllByTitleOrAuthor
+                .Returns(new[] { new Book(2, "", "", "", "", 0m) });
 
             var bookService = new BookService(bookRepositoryStun.Object);
-            var validIsbn = "ISBN 12345-67890";
+            var author = "Ritchie";
 
-            var actual = bookService.GetAllByQuery(validIsbn);
+            var actual = bookService.GetAllByQuery(author);
 
-            Assert.Collection(actual, book => Assert.Equal(1, book.Id)); //Строка Assert.Collection(actual, book => Assert.Equal(1, book.Id));
+            Assert.Collection(actual, book => Assert.Equal(2, book.Id)); //Строка Assert.Collection(actual, book => Assert.Equal(1, book.Id));
                                                                          //проверяет, имеют ли все элементы в фактической коллекции свойство Id, равное 1.
                                                                          //Метод Assert.Collection принимает два параметра: проверяемую коллекцию и действие,
                                                                          //выполняемое над каждым элементом коллекции.
@@ -40,10 +40,10 @@ namespace Store.Tests
             var bookRepositoryStun = new Mock<IBookRepository>();
 
             bookRepositoryStun.Setup(x => x.GetAllByIsbn(It.IsAny<string>()))   // тут заглушка которая создает массив и возвращает его используя метод GetAllByIsbn
-                .Returns(new[] { new Book(1, "", "", "") });
+                .Returns(new[] { new Book(1, "", "", "", "", 0m) });
 
             bookRepositoryStun.Setup(x => x.GetAllByTitleOrAuthor(It.IsAny<string>())) // Вторая заглушка которая создает массив и возвращает его используя метод GetAllByTitleOrAuthor
-                .Returns(new[] { new Book(2, "", "", "") });
+                .Returns(new[] { new Book(2, "", "", "","",0m) });
 
             var bookService = new BookService(bookRepositoryStun.Object);
             var invalidIsbn = "12345-67890";
