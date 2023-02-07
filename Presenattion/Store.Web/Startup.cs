@@ -25,9 +25,18 @@ namespace Store.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>                          // ыв
+                                                                    // Тут мы настраиваем опции. это параметры к сессии как она будет храниться в куках
+            {
+                options.IdleTimeout= TimeSpan.FromMinutes(20);      // Интервалы времени в дот нете  можно задавать с помощтю TimeSpan.  Это время жизни сессии
+                options.Cookie.HttpOnly = true;                     // Тут указываем параметры Cokie - HttpOnly означает что у нас доступ к нашим куках будет из локальных java скриптов
+                                                                    // т.е. только сервер может обращаться сюда
+                options.Cookie.IsEssential= true;                   //
+            });
+
             services.AddSingleton<IBookRepository, BookRepository>();
             services.AddSingleton<BookService>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +58,8 @@ namespace Store.Web
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
