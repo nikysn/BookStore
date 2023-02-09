@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Store.Tests
 {
-    internal class StubBookRepository : IBookRepository
+   /* internal class StubBookRepository : IBookRepository
     {
         public Book[] ResultOfGetAllByIsbn { get; set; }
         public Book[] ResultOfGetAllByTitleOrAuthor { get; set; }
@@ -23,5 +23,5 @@ namespace Store.Tests
         {
             throw new NotImplementedException();
         }
-    }
+    }*/
 }

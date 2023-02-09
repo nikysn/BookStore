@@ -14,18 +14,18 @@ namespace Store.Tests
             var bookRepositoryStun = new Mock<IBookRepository>();
 
             // далее происходит настройка с помощью метод Setup                                 
-            bookRepositoryStun.Setup(x => x.GetAllByIsbn("Ritchie"))   // тут заглушка которая создает массив и возвращает его используя метод GetAllByIsbn
+            bookRepositoryStun.Setup(x => x.GetAllByIsbn(It.IsAny<string>()))   // тут заглушка которая создает массив и возвращает его используя метод GetAllByIsbn
                 .Returns(new[] { new Book(1, "", "", "", "", 0m) });
 
-            bookRepositoryStun.Setup(x => x.GetAllByTitleOrAuthor("Ritchie")) // Вторая заглушка которая создает массив и возвращает его используя метод GetAllByTitleOrAuthor
+            bookRepositoryStun.Setup(x => x.GetAllByTitleOrAuthor(It.IsAny<string>())/*"Ritchie")*/) // Вторая заглушка которая создает массив и возвращает его используя метод GetAllByTitleOrAuthor
                 .Returns(new[] { new Book(2, "", "", "", "", 0m) });
 
             var bookService = new BookService(bookRepositoryStun.Object); // вот этот Mock который в параметре, имеет тип IbookRepository
-            var author = "Ritchie";
+            var invalidIsbn = "12345-67890";
 
            
 
-            var actual = bookService.GetAllByQuery(author);
+            var actual = bookService.GetAllByQuery(invalidIsbn);
 
             Assert.Collection(actual, book => Assert.Equal(2, book.Id)); //Строка Assert.Collection(actual, book => Assert.Equal(1, book.Id));
                                                                          //проверяет, имеют ли все элементы в фактической коллекции свойство Id, равное 1.
@@ -33,7 +33,7 @@ namespace Store.Tests
                                                                          //выполняемое над каждым элементом коллекции.
                                                                          //Второй параметр, book => Assert.Equal(1, book.Id), представляет собой лямбда-выражение,
                                                                          //которое выполняет проверку Assert.Equal(1, book.Id) для каждого элемента коллекции и проверяет,
-                                                                         //соответствует ли свойство Id элемента каждый элемент равен 1.
+                                                                         //соответствует ли свойство Id элемента каждый элемент равен 2.
         }
 
         
@@ -42,19 +42,19 @@ namespace Store.Tests
         {
             var bookRepositoryStun = new Mock<IBookRepository>();
 
-            bookRepositoryStun.Setup(x => x.GetAllByIsbn(It.IsAny<string>()))   // тут заглушка которая создает массив и возвращает его используя метод GetAllByIsbn
+            bookRepositoryStun.Setup(x => x.GetAllByIsbn("Ritchie"))   // тут заглушка которая создает массив и возвращает его используя метод GetAllByIsbn
                 .Returns(new[] { new Book(1, "", "", "", "", 0m) });
 
-            bookRepositoryStun.Setup(x => x.GetAllByTitleOrAuthor(It.IsAny<string>())) // Вторая заглушка которая создает массив и возвращает его используя метод GetAllByTitleOrAuthor
+            bookRepositoryStun.Setup(x => x.GetAllByTitleOrAuthor("Ritchie")) // Вторая заглушка которая создает массив и возвращает его используя метод GetAllByTitleOrAuthor
                 .Returns(new[] { new Book(2, "", "", "","",0m) });
 
             var bookService = new BookService(bookRepositoryStun.Object);
-            var invalidIsbn = "12345-67890";
+            var author = "Ritchie";
 
-            var actual = bookService.GetAllByQuery(invalidIsbn);
+            var actual = bookService.GetAllByQuery(author);
 
             Assert.Collection(actual, book => Assert.Equal(2, book.Id)); //Строка Assert.Collection(actual, book => Assert.Equal(1, book.Id));
-                                                                         //проверяет, имеют ли все элементы в фактической коллекции свойство Id, равное 1.
+                                                                         //проверяет, имеют ли все элементы в фактической коллекции свойство Id, равное 2.
                                                                          //Метод Assert.Collection принимает два параметра: проверяемую коллекцию и действие,
                                                                          //выполняемое над каждым элементом коллекции.
                                                                          //Второй параметр, book => Assert.Equal(1, book.Id), представляет собой лямбда-выражение,

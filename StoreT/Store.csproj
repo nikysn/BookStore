@@ -45,6 +45,9 @@
     <Compile Include="Book.cs" />
     <Compile Include="BookService.cs" />
     <Compile Include="IBookRepository.cs" />
+    <Compile Include="IOrderRepository.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,7 +16,7 @@ namespace Store.Tests
         [Fact]
         public void IsIsbn_WithBlankString_ReturnFalse()
         {
-            bool actual = Book.IsIsbn("   ");  //ѕровер€ем параметр метода на наличие пробелов
+            bool actual = Book.IsIsbn("   ");  //ѕровер€ем параметр метода на наличие только пробелов
 
             Assert.False(actual);
         }
